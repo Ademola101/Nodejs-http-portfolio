@@ -29,7 +29,17 @@ const app = http.createServer((req,res) => {
   res.end(err);
   return;
 })
-
+ break 
+ case "/contact":
+  fs.readFile(__dirname + "/contact.html").then((content => {
+    res.setHeader("Content-Type", "text/html");
+    res.writeHead(200);
+    res.end(content)
+  })).catch((err) => {
+    res.writeHead(500)
+    res.end(err);
+    return;
+  })
   }
    });
 
